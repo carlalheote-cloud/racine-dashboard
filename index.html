@@ -58,17 +58,24 @@
   <section class="growth-section">
     <div class="growth-header">
       <h2>Croissance du compte</h2>
-      <p>Chaque élément est une action réelle sur votre site, du plus récent au plus ancien.</p>
+      <p>Chaque élément est une action réelle sur votre site. Cliquez sur une tâche pour voir le détail.</p>
+    </div>
+
+    <div class="filter-tabs">
+      <button class="filter-tab active" data-filter="all">Tout</button>
+      <button class="filter-tab" data-filter="agent">Agent IA</button>
+      <button class="filter-tab" data-filter="human">Consultant</button>
+      <button class="filter-tab" data-filter="warning">À valider</button>
     </div>
 
     <div class="growth-feed">
 
-      <div class="growth-item">
+      <div class="growth-item" data-type="agent">
         <div class="growth-connector">
           <div class="growth-node done"></div>
           <div class="growth-line"></div>
         </div>
-        <div class="growth-card">
+        <div class="growth-card" data-detail="maillage">
           <div class="growth-card-top">
             <span class="tag tag-agent">Agent IA</span>
             <span class="tag tag-validated">✓ Validé par Camille</span>
@@ -76,15 +83,16 @@
           </div>
           <h3>Maillage interne mis à jour</h3>
           <p>7 nouveaux liens internes ajoutés vers la page « Climatisation réversible », identifiée comme sous-maillée lors de l'audit de la semaine dernière.</p>
+          <span class="card-cta">Voir le détail →</span>
         </div>
       </div>
 
-      <div class="growth-item">
+      <div class="growth-item" data-type="agent human">
         <div class="growth-connector">
           <div class="growth-node done"></div>
           <div class="growth-line"></div>
         </div>
-        <div class="growth-card">
+        <div class="growth-card" data-detail="migration">
           <div class="growth-card-top">
             <span class="tag tag-human">Consultant</span>
             <span class="tag tag-agent">+ Agent IA</span>
@@ -92,15 +100,16 @@
           </div>
           <h3>Plan de migration — nouvelle arborescence</h3>
           <p>Cartographie complète des 340 URL à rediriger vers la nouvelle structure du site, avec vérification une à une des backlinks et de l'indexation avant validation. Travail mixte : l'agent a préparé la liste, Camille a arbitré chaque cas ambigu.</p>
+          <span class="card-cta">Voir le détail →</span>
         </div>
       </div>
 
-      <div class="growth-item">
+      <div class="growth-item" data-type="agent">
         <div class="growth-connector">
           <div class="growth-node done"></div>
           <div class="growth-line"></div>
         </div>
-        <div class="growth-card">
+        <div class="growth-card" data-detail="brief">
           <div class="growth-card-top">
             <span class="tag tag-agent">Agent IA</span>
             <span class="tag tag-validated">✓ Validé par Camille</span>
@@ -108,30 +117,32 @@
           </div>
           <h3>Brief de contenu produit</h3>
           <p>« Climatisation silencieuse appartement » — intention de recherche, structure Hn et FAQ générées à partir de l'analyse de la SERP concurrentielle.</p>
+          <span class="card-cta">Voir le détail →</span>
         </div>
       </div>
 
-      <div class="growth-item">
+      <div class="growth-item" data-type="warning">
         <div class="growth-connector">
           <div class="growth-node warning"></div>
           <div class="growth-line"></div>
         </div>
-        <div class="growth-card card-warning">
+        <div class="growth-card card-warning" data-detail="anomalie">
           <div class="growth-card-top">
             <span class="tag tag-warning">⚠ À valider</span>
             <span class="growth-time">Hier, 11:02</span>
           </div>
           <h3>Anomalie détectée — prix produits</h3>
           <p>3 fiches produit affichent un tarif différent du fichier de référence transmis. En attente de relecture avant correction, pour éviter l'erreur déjà rencontrée sur ce type de contenu.</p>
+          <span class="card-cta">Voir le détail →</span>
         </div>
       </div>
 
-      <div class="growth-item">
+      <div class="growth-item" data-type="agent">
         <div class="growth-connector">
           <div class="growth-node done"></div>
           <div class="growth-line"></div>
         </div>
-        <div class="growth-card">
+        <div class="growth-card" data-detail="audit">
           <div class="growth-card-top">
             <span class="tag tag-agent">Agent IA</span>
             <span class="tag tag-validated">✓ Validé par Camille</span>
@@ -139,25 +150,34 @@
           </div>
           <h3>Audit technique hebdomadaire</h3>
           <p>Crawl complet du site : aucune erreur 404 nouvelle, 2 redirections en chaîne repérées et corrigées, temps de chargement mobile stable.</p>
+          <span class="card-cta">Voir le détail →</span>
         </div>
       </div>
 
-      <div class="growth-item">
+      <div class="growth-item" data-type="human">
         <div class="growth-connector">
           <div class="growth-node done"></div>
         </div>
-        <div class="growth-card">
+        <div class="growth-card" data-detail="strategie">
           <div class="growth-card-top">
             <span class="tag tag-human">Consultant</span>
             <span class="growth-time">Lundi, 09:00</span>
           </div>
           <h3>Priorisation stratégique du mois</h3>
           <p>Décision prise en amont par Camille : concentrer les efforts sur la thématique « climatisation réversible » plutôt que « climatisation mobile », moins rentable pour ce client.</p>
+          <span class="card-cta">Voir le détail →</span>
         </div>
       </div>
 
     </div>
   </section>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
 
   <section class="footer-note">
     <div class="footer-note-inner">
@@ -168,5 +188,6 @@
 
 </main>
 
+<script src="script.js"></script>
 </body>
 </html>
