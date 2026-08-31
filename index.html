@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Racine — Suivi de compte</title>
+<title>Racine — Espace client</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -29,6 +29,18 @@
       <span class="account-pill">Compte — Ayrton Climatisation</span>
     </div>
   </div>
+
+  <nav class="main-tabs">
+    <button class="main-tab active" data-tab="overview">Vue d'ensemble</button>
+    <button class="main-tab" data-tab="todo">À faire</button>
+    <button class="main-tab" data-tab="briefs">Briefs</button>
+    <button class="main-tab" data-tab="audits">Audits</button>
+    <button class="main-tab" data-tab="rapports">Rapports</button>
+    <button class="main-tab" data-tab="acces">Accès</button>
+    <button class="main-tab" data-tab="confiance">Confiance</button>
+    <button class="main-tab" data-tab="discussion">Discussion</button>
+    <button class="main-tab" data-tab="bienvenue">Bienvenue</button>
+  </nav>
 </header>
 
 <div class="toast" id="toast">
@@ -42,145 +54,463 @@
 
 <main class="page">
 
-  <section class="hero">
-    <p class="eyebrow">Prototype conceptuel · thèse professionnelle</p>
-    <h1>Ce qui a poussé sur votre compte<br>cette semaine.</h1>
-    <p class="hero-sub">Chaque action menée par nos agents IA est vérifiée par un consultant avant d'apparaître ici. Rien n'est publié sans validation humaine.</p>
+  <!-- ===== ONGLET VUE D'ENSEMBLE ===== -->
+  <section class="tab-panel active" id="panel-overview">
+
+    <div class="hero">
+      <h1>Rien à faire de votre côté.<br>Tout avance, vous suivez.</h1>
+      <p class="hero-sub">Racine se connecte à vos outils, ingère vos données et agit directement sur votre site. Chaque action est vérifiée par un consultant avant de partir en ligne, mais vous n'avez jamais besoin de valider vous-même pour que le travail avance.</p>
+    </div>
+
+    <div class="sources-connected">
+      <span class="sources-label">Sources connectées et ingérées automatiquement</span>
+      <div class="sources-row">
+        <div class="source-chip">📊 Google Analytics</div>
+        <div class="source-chip">🔍 Search Console</div>
+        <div class="source-chip">🌐 WordPress</div>
+        <div class="source-chip">📁 Historique des contenus</div>
+        <div class="source-chip">🏷️ Fichier catalogue produits</div>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <span class="stat-number">14</span>
+        <span class="stat-label">tâches complétées<br>cette semaine</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">relues par un<br>consultant senior</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">2</span>
+        <span class="stat-label">points de vigilance<br>en attente</span>
+      </div>
+      <div class="stat-card accent">
+        <span class="stat-number">+18%</span>
+        <span class="stat-label">clics organiques<br>vs mois dernier</span>
+      </div>
+    </div>
+
+    <div class="growth-section">
+      <div class="growth-header">
+        <h2>Déjà en ligne sur votre site</h2>
+        <p>Aucune de ces actions n'attend votre retour pour être appliquée. Elles sont déjà live. Cliquez pour voir le détail.</p>
+      </div>
+
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">Tout</button>
+        <button class="filter-tab" data-filter="agent">Agent IA</button>
+        <button class="filter-tab" data-filter="human">Consultant</button>
+        <button class="filter-tab" data-filter="warning">À valider</button>
+      </div>
+
+      <div class="growth-feed">
+
+        <div class="growth-item" data-type="agent">
+          <div class="growth-connector"><div class="growth-node done"></div><div class="growth-line"></div></div>
+          <div class="growth-card" data-detail="maillage">
+            <div class="growth-card-top">
+              <span class="tag tag-live">● En ligne</span>
+              <span class="tag tag-validated">✓ Validé par Camille</span>
+              <span class="growth-time">Aujourd'hui, 09:14</span>
+            </div>
+            <h3>Maillage interne mis à jour</h3>
+            <p>7 nouveaux liens internes déjà intégrés sur « Climatisation réversible ». Aucune action requise de votre part.</p>
+            <span class="card-cta">Voir le détail →</span>
+          </div>
+        </div>
+
+        <div class="growth-item" data-type="agent human">
+          <div class="growth-connector"><div class="growth-node done"></div><div class="growth-line"></div></div>
+          <div class="growth-card" data-detail="migration">
+            <div class="growth-card-top">
+              <span class="tag tag-human">Consultant</span>
+              <span class="tag tag-agent">+ Agent IA</span>
+              <span class="growth-time">Mardi, 10:30</span>
+            </div>
+            <h3>Plan de migration — nouvelle arborescence</h3>
+            <p>340 URL cartographiées et vérifiées avant redirection.</p>
+            <span class="card-cta">Voir le détail →</span>
+          </div>
+        </div>
+
+        <div class="growth-item" data-type="agent">
+          <div class="growth-connector"><div class="growth-node done"></div><div class="growth-line"></div></div>
+          <div class="growth-card" data-detail="brief-doc">
+            <div class="growth-card-top">
+              <span class="tag tag-agent">Agent IA</span>
+              <span class="tag tag-validated">✓ Validé par Camille</span>
+              <span class="growth-time">Hier, 16:40</span>
+            </div>
+            <h3>Brief de contenu produit — document complet</h3>
+            <p>« Climatisation silencieuse appartement » — prêt à publier.</p>
+            <span class="card-cta">Ouvrir le document →</span>
+          </div>
+        </div>
+
+        <div class="growth-item" data-type="warning">
+          <div class="growth-connector"><div class="growth-node warning"></div><div class="growth-line"></div></div>
+          <div class="growth-card card-warning" data-detail="anomalie">
+            <div class="growth-card-top">
+              <span class="tag tag-warning">⚠ À valider</span>
+              <span class="growth-time">Hier, 11:02</span>
+            </div>
+            <h3>Anomalie détectée — prix produits</h3>
+            <p>3 fiches produit avec un tarif différent du fichier de référence.</p>
+            <span class="card-cta">Voir le détail →</span>
+          </div>
+        </div>
+
+        <div class="growth-item" data-type="agent">
+          <div class="growth-connector"><div class="growth-node done"></div><div class="growth-line"></div></div>
+          <div class="growth-card" data-detail="audit">
+            <div class="growth-card-top">
+              <span class="tag tag-agent">Agent IA</span>
+              <span class="tag tag-validated">✓ Validé par Camille</span>
+              <span class="growth-time">Lundi, 14:20</span>
+            </div>
+            <h3>Audit technique hebdomadaire</h3>
+            <p>Crawl complet, 2 redirections en chaîne corrigées.</p>
+            <span class="card-cta">Voir le détail →</span>
+          </div>
+        </div>
+
+        <div class="growth-item" data-type="human">
+          <div class="growth-connector"><div class="growth-node done"></div></div>
+          <div class="growth-card" data-detail="strategie">
+            <div class="growth-card-top">
+              <span class="tag tag-human">Consultant</span>
+              <span class="growth-time">Lundi, 09:00</span>
+            </div>
+            <h3>Priorisation stratégique du mois</h3>
+            <p>Focus sur « climatisation réversible », plus rentable.</p>
+            <span class="card-cta">Voir le détail →</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </section>
 
-  <section class="stats-row">
-    <div class="stat-card">
-      <span class="stat-number">14</span>
-      <span class="stat-label">tâches complétées<br>cette semaine</span>
+  <!-- ===== ONGLET À FAIRE (KANBAN) ===== -->
+  <section class="tab-panel" id="panel-todo">
+    <div class="panel-header">
+      <h2>À faire</h2>
+      <p>Toutes les tâches en cours sur votre compte, classées par priorité et par statut.</p>
     </div>
-    <div class="stat-card">
-      <span class="stat-number">100%</span>
-      <span class="stat-label">relues par un<br>consultant senior</span>
-    </div>
-    <div class="stat-card">
-      <span class="stat-number">2</span>
-      <span class="stat-label">points de vigilance<br>en attente</span>
-    </div>
-    <div class="stat-card accent">
-      <span class="stat-number">+18%</span>
-      <span class="stat-label">clics organiques<br>vs mois dernier</span>
+
+    <div class="kanban">
+      <div class="kanban-col">
+        <div class="kanban-col-head"><span class="kanban-dot todo"></span> À faire <span class="kanban-count">3</span></div>
+
+        <div class="kanban-card">
+          <span class="priority priority-high">Priorité haute</span>
+          <h4>Refonte des balises title catégories</h4>
+          <p>12 pages catégories à optimiser suite à l'audit sémantique</p>
+          <div class="kanban-foot"><span class="tag tag-agent">Agent IA</span><span class="kanban-date">Prévu jeu. 28</span></div>
+        </div>
+
+        <div class="kanban-card">
+          <span class="priority priority-medium">Priorité moyenne</span>
+          <h4>Brief « pompe à chaleur air-air »</h4>
+          <p>Nouveau mot-clé identifié, fort potentiel de trafic</p>
+          <div class="kanban-foot"><span class="tag tag-agent">Agent IA</span><span class="kanban-date">Prévu ven. 29</span></div>
+        </div>
+
+        <div class="kanban-card">
+          <span class="priority priority-low">Priorité basse</span>
+          <h4>Nettoyage des balises alt images</h4>
+          <p>Point mineur relevé lors du dernier audit technique</p>
+          <div class="kanban-foot"><span class="tag tag-agent">Agent IA</span><span class="kanban-date">Prévu la semaine pro.</span></div>
+        </div>
+      </div>
+
+      <div class="kanban-col">
+        <div class="kanban-col-head"><span class="kanban-dot progress"></span> En cours <span class="kanban-count">2</span></div>
+
+        <div class="kanban-card">
+          <span class="priority priority-high">Priorité haute</span>
+          <h4><span class="gear-spin">⚙</span> Plan de migration — nouvelle arborescence</h4>
+          <p>340 URL à rediriger, 28 cas ambigus à arbitrer</p>
+          <div class="kanban-foot"><span class="tag tag-human">Camille</span><span class="kanban-date">Depuis mardi</span></div>
+        </div>
+
+        <div class="kanban-card kanban-warning">
+          <span class="priority priority-high">Priorité haute</span>
+          <h4><span class="gear-spin">⚙</span> Anomalie prix produits</h4>
+          <p>3 fiches en attente de vérification avant correction</p>
+          <div class="kanban-foot"><span class="tag tag-warning">⚠ À valider</span><span class="kanban-date">Depuis hier</span></div>
+        </div>
+      </div>
+
+      <div class="kanban-col">
+        <div class="kanban-col-head"><span class="kanban-dot done"></span> Terminé <span class="kanban-count">3</span></div>
+
+        <div class="kanban-card kanban-done">
+          <h4>Maillage interne mis à jour</h4>
+          <p>7 nouveaux liens internes ajoutés</p>
+          <div class="kanban-foot"><span class="tag tag-validated">✓ Camille</span><span class="kanban-date">Aujourd'hui</span></div>
+        </div>
+
+        <div class="kanban-card kanban-done">
+          <h4>Brief « climatisation silencieuse »</h4>
+          <p>Document complet, prêt à publier</p>
+          <div class="kanban-foot"><span class="tag tag-validated">✓ Camille</span><span class="kanban-date">Hier</span></div>
+        </div>
+
+        <div class="kanban-card kanban-done">
+          <h4>Audit technique hebdomadaire</h4>
+          <p>Crawl complet, 2 redirections corrigées</p>
+          <div class="kanban-foot"><span class="tag tag-validated">✓ Camille</span><span class="kanban-date">Lundi</span></div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="growth-section">
-    <div class="growth-header">
-      <h2>Croissance du compte</h2>
-      <p>Chaque élément est une action réelle sur votre site. Cliquez sur une tâche pour voir le détail.</p>
+  <!-- ===== ONGLET BRIEFS ===== -->
+  <section class="tab-panel" id="panel-briefs">
+    <div class="panel-header">
+      <h2>Briefs</h2>
+      <p>Tous les briefs de contenu, rédigés et prêts à publier.</p>
     </div>
 
-    <div class="filter-tabs">
-      <button class="filter-tab active" data-filter="all">Tout</button>
-      <button class="filter-tab" data-filter="agent">Agent IA</button>
-      <button class="filter-tab" data-filter="human">Consultant</button>
-      <button class="filter-tab" data-filter="warning">À valider</button>
+    <div class="list-table">
+      <div class="list-row list-row-click" data-detail="brief-doc">
+        <div class="list-main">
+          <h4>Climatisation silencieuse appartement</h4>
+          <span class="list-sub">Meta title, H1-H2, FAQ générés — validé par Camille</span>
+        </div>
+        <span class="status status-done">Prêt à publier</span>
+      </div>
+      <div class="list-row">
+        <div class="list-main">
+          <h4>Pompe à chaleur air-air</h4>
+          <span class="list-sub">En cours de rédaction par l'agent</span>
+        </div>
+        <span class="status status-progress">En cours</span>
+      </div>
+      <div class="list-row">
+        <div class="list-main">
+          <h4>Entretien climatisation avant l'été</h4>
+          <span class="list-sub">Publié le 12 août sur ayrton-climatisation.fr</span>
+        </div>
+        <span class="status status-published">Publié</span>
+      </div>
+      <div class="list-row">
+        <div class="list-main">
+          <h4>Climatiseur mobile vs réversible</h4>
+          <span class="list-sub">Publié le 3 août sur ayrton-climatisation.fr</span>
+        </div>
+        <span class="status status-published">Publié</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ONGLET AUDITS ===== -->
+  <section class="tab-panel" id="panel-audits">
+    <div class="panel-header">
+      <h2>Audits</h2>
+      <p>L'historique complet des audits menés sur votre site.</p>
     </div>
 
-    <div class="growth-feed">
-
-      <div class="growth-item" data-type="agent">
-        <div class="growth-connector">
-          <div class="growth-node done"></div>
-          <div class="growth-line"></div>
+    <div class="audit-group">
+      <h3>Technique</h3>
+      <div class="list-table">
+        <div class="list-row">
+          <div class="list-main"><h4>Audit technique hebdomadaire</h4><span class="list-sub">Crawl complet, 340 pages — 2 redirections en chaîne corrigées</span></div>
+          <span class="status status-done">Lundi 14:20</span>
         </div>
-        <div class="growth-card" data-detail="maillage">
-          <div class="growth-card-top">
-            <span class="tag tag-agent">Agent IA</span>
-            <span class="tag tag-validated">✓ Validé par Camille</span>
-            <span class="growth-time">Aujourd'hui, 09:14</span>
-          </div>
-          <h3>Maillage interne mis à jour</h3>
-          <p>7 nouveaux liens internes ajoutés vers la page « Climatisation réversible », identifiée comme sous-maillée lors de l'audit de la semaine dernière.</p>
-          <span class="card-cta">Voir le détail →</span>
+        <div class="list-row">
+          <div class="list-main"><h4>Audit vitesse mobile</h4><span class="list-sub">Temps de chargement moyen 1,8s, stable</span></div>
+          <span class="status status-done">Il y a 2 semaines</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="audit-group">
+      <h3>Sémantique</h3>
+      <div class="list-table">
+        <div class="list-row">
+          <div class="list-main"><h4>Audit de cannibalisation</h4><span class="list-sub">3 pages en concurrence sur « climatisation réversible »</span></div>
+          <span class="status status-done">Il y a 5 jours</span>
+        </div>
+        <div class="list-row">
+          <div class="list-main"><h4>Analyse des balises title catégories</h4><span class="list-sub">12 pages identifiées à optimiser</span></div>
+          <span class="status status-progress">En cours</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="audit-group">
+      <h3>Netlinking</h3>
+      <div class="list-table">
+        <div class="list-row">
+          <div class="list-main"><h4>Vérification des backlinks avant migration</h4><span class="list-sub">15 pages à fort trafic vérifiées une à une</span></div>
+          <span class="status status-done">Mardi 10:30</span>
+        </div>
+        <div class="list-row">
+          <div class="list-main"><h4>Profil de liens entrants</h4><span class="list-sub">Aucun lien toxique détecté ce mois-ci</span></div>
+          <span class="status status-done">Il y a 3 semaines</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ONGLET RAPPORTS ===== -->
+  <section class="tab-panel" id="panel-rapports">
+    <div class="panel-header">
+      <h2>Rapports</h2>
+      <p>Vos reportings mensuels, disponibles en PDF.</p>
+    </div>
+
+    <div class="list-table">
+      <div class="list-row">
+        <div class="list-main"><h4>Rapport — Août 2026</h4><span class="list-sub">Trafic, positions, actions menées ce mois-ci</span></div>
+        <span class="pdf-btn">⬇ PDF</span>
+      </div>
+      <div class="list-row">
+        <div class="list-main"><h4>Rapport — Juillet 2026</h4><span class="list-sub">+18% de clics organiques vs juin</span></div>
+        <span class="pdf-btn">⬇ PDF</span>
+      </div>
+      <div class="list-row">
+        <div class="list-main"><h4>Rapport — Juin 2026</h4><span class="list-sub">Lancement du plan de migration</span></div>
+        <span class="pdf-btn">⬇ PDF</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ONGLET ACCÈS ===== -->
+  <section class="tab-panel" id="panel-acces">
+    <div class="panel-header">
+      <h2>Accès</h2>
+      <p>Les outils utilisés sur votre compte. Les identifiants restent masqués et chiffrés, jamais affichés en clair.</p>
+    </div>
+
+    <div class="list-table">
+      <div class="access-row">
+        <div class="list-main"><h4>WordPress</h4><span class="list-sub">ayrton-climatisation.fr/wp-admin</span></div>
+        <span class="access-mask">••••••••••</span>
+        <button class="access-btn">Demander l'accès</button>
+      </div>
+      <div class="access-row">
+        <div class="list-main"><h4>Google Search Console</h4><span class="list-sub">Compte vérifié, accès lecture</span></div>
+        <span class="access-mask">••••••••••</span>
+        <button class="access-btn">Demander l'accès</button>
+      </div>
+      <div class="access-row">
+        <div class="list-main"><h4>Google Analytics</h4><span class="list-sub">Propriété GA4 connectée</span></div>
+        <span class="access-mask">••••••••••</span>
+        <button class="access-btn">Demander l'accès</button>
+      </div>
+    </div>
+    <p class="access-note">🔒 Pour des raisons de sécurité, les mots de passe ne sont jamais affichés dans cet espace. Toute demande d'accès est envoyée directement à Camille.</p>
+  </section>
+
+  <!-- ===== ONGLET CONFIANCE ===== -->
+  <section class="tab-panel" id="panel-confiance">
+    <div class="panel-header">
+      <h2>Confiance</h2>
+      <p>La répartition entre ce que l'agent fait seul et ce qu'un humain valide, mois après mois.</p>
+    </div>
+
+    <div class="trust-legend">
+      <span class="trust-dot agent"></span> Agent IA seul
+      <span class="trust-dot human"></span> Validé ou décidé par un humain
+    </div>
+
+    <div class="trust-chart">
+      <div class="trust-row">
+        <span class="trust-month">Mai</span>
+        <div class="trust-bar"><div class="trust-fill-agent" style="width:55%"></div><div class="trust-fill-human" style="width:45%"></div></div>
+        <span class="trust-pct">55 / 45</span>
+      </div>
+      <div class="trust-row">
+        <span class="trust-month">Juin</span>
+        <div class="trust-bar"><div class="trust-fill-agent" style="width:60%"></div><div class="trust-fill-human" style="width:40%"></div></div>
+        <span class="trust-pct">60 / 40</span>
+      </div>
+      <div class="trust-row">
+        <span class="trust-month">Juillet</span>
+        <div class="trust-bar"><div class="trust-fill-agent" style="width:58%"></div><div class="trust-fill-human" style="width:42%"></div></div>
+        <span class="trust-pct">58 / 42</span>
+      </div>
+      <div class="trust-row">
+        <span class="trust-month">Août</span>
+        <div class="trust-bar"><div class="trust-fill-agent" style="width:52%"></div><div class="trust-fill-human" style="width:48%"></div></div>
+        <span class="trust-pct">52 / 48</span>
+      </div>
+    </div>
+
+    <p class="trust-note">La part humaine ne descend jamais sous 40 %, y compris sur les mois les plus automatisés. C'est un seuil que Camille s'impose volontairement, pas une contrainte technique.</p>
+  </section>
+
+  <!-- ===== ONGLET DISCUSSION ===== -->
+  <section class="tab-panel" id="panel-discussion">
+    <div class="panel-header">
+      <h2>Discussion</h2>
+      <p>L'outil appuie la relation avec votre consultante, il ne la remplace pas.</p>
+    </div>
+
+    <div class="chat-box">
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg chat-consultant">
+          <span class="chat-author">Camille</span>
+          <p>Bonjour ! J'ai validé le plan de migration ce matin, il reste 3 URL sur lesquelles j'aimerais votre avis avant de trancher.</p>
+          <span class="chat-time">10:32</span>
+        </div>
+        <div class="chat-msg chat-client">
+          <p>Parfait, je regarde ça aujourd'hui. Pour l'anomalie de prix détectée hier, c'est bien le fichier d'octobre qui fait foi ?</p>
+          <span class="chat-time">11:05</span>
+        </div>
+        <div class="chat-msg chat-consultant">
+          <span class="chat-author">Camille</span>
+          <p>Oui exactement, je corrige ça dans la journée dès votre confirmation.</p>
+          <span class="chat-time">11:12</span>
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Écrire à Camille...">
+        <button class="chat-send" id="chatSend">Envoyer</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ONGLET BIENVENUE ===== -->
+  <section class="tab-panel" id="panel-bienvenue">
+    <div class="panel-header">
+      <h2>Bienvenue chez Racine</h2>
+      <p>Trois questions pour que Camille adapte son accompagnement dès le départ.</p>
+    </div>
+
+    <div class="onboard-box">
+      <div class="onboard-q">
+        <p>Avez-vous une équipe capable de suivre le sujet SEO au quotidien ?</p>
+        <div class="onboard-choices" data-q="1">
+          <button class="onboard-choice">Oui</button>
+          <button class="onboard-choice">Non</button>
+        </div>
+      </div>
+      <div class="onboard-q">
+        <p>Combien de temps pouvez-vous y consacrer chaque mois ?</p>
+        <div class="onboard-choices" data-q="2">
+          <button class="onboard-choice">Moins d'une heure</button>
+          <button class="onboard-choice">Quelques heures</button>
+          <button class="onboard-choice">Je délègue tout</button>
+        </div>
+      </div>
+      <div class="onboard-q">
+        <p>Votre site a-t-il une architecture complexe (multilingue, marketplace...) ?</p>
+        <div class="onboard-choices" data-q="3">
+          <button class="onboard-choice">Oui</button>
+          <button class="onboard-choice">Non</button>
         </div>
       </div>
 
-      <div class="growth-item" data-type="agent human">
-        <div class="growth-connector">
-          <div class="growth-node done"></div>
-          <div class="growth-line"></div>
-        </div>
-        <div class="growth-card" data-detail="migration">
-          <div class="growth-card-top">
-            <span class="tag tag-human">Consultant</span>
-            <span class="tag tag-agent">+ Agent IA</span>
-            <span class="growth-time">Mardi, 10:30</span>
-          </div>
-          <h3>Plan de migration — nouvelle arborescence</h3>
-          <p>Cartographie complète des 340 URL à rediriger vers la nouvelle structure du site, avec vérification une à une des backlinks et de l'indexation avant validation. Travail mixte : l'agent a préparé la liste, Camille a arbitré chaque cas ambigu.</p>
-          <span class="card-cta">Voir le détail →</span>
-        </div>
+      <div class="onboard-result" id="onboardResult" style="display:none;">
+        <h4>Votre profil</h4>
+        <p id="onboardResultText"></p>
       </div>
-
-      <div class="growth-item" data-type="agent">
-        <div class="growth-connector">
-          <div class="growth-node done"></div>
-          <div class="growth-line"></div>
-        </div>
-        <div class="growth-card" data-detail="brief-doc">
-          <div class="growth-card-top">
-            <span class="tag tag-agent">Agent IA</span>
-            <span class="tag tag-validated">✓ Validé par Camille</span>
-            <span class="growth-time">Hier, 16:40</span>
-          </div>
-          <h3>Brief de contenu produit — document complet</h3>
-          <p>« Climatisation silencieuse appartement » — brief entièrement rédigé, prêt à publier.</p>
-          <span class="card-cta">Ouvrir le document →</span>
-        </div>
-      </div>
-
-      <div class="growth-item" data-type="warning">
-        <div class="growth-connector">
-          <div class="growth-node warning"></div>
-          <div class="growth-line"></div>
-        </div>
-        <div class="growth-card card-warning" data-detail="anomalie">
-          <div class="growth-card-top">
-            <span class="tag tag-warning">⚠ À valider</span>
-            <span class="growth-time">Hier, 11:02</span>
-          </div>
-          <h3>Anomalie détectée — prix produits</h3>
-          <p>3 fiches produit affichent un tarif différent du fichier de référence transmis. En attente de relecture avant correction, pour éviter l'erreur déjà rencontrée sur ce type de contenu.</p>
-          <span class="card-cta">Voir le détail →</span>
-        </div>
-      </div>
-
-      <div class="growth-item" data-type="agent">
-        <div class="growth-connector">
-          <div class="growth-node done"></div>
-          <div class="growth-line"></div>
-        </div>
-        <div class="growth-card" data-detail="audit">
-          <div class="growth-card-top">
-            <span class="tag tag-agent">Agent IA</span>
-            <span class="tag tag-validated">✓ Validé par Camille</span>
-            <span class="growth-time">Lundi, 14:20</span>
-          </div>
-          <h3>Audit technique hebdomadaire</h3>
-          <p>Crawl complet du site : aucune erreur 404 nouvelle, 2 redirections en chaîne repérées et corrigées, temps de chargement mobile stable.</p>
-          <span class="card-cta">Voir le détail →</span>
-        </div>
-      </div>
-
-      <div class="growth-item" data-type="human">
-        <div class="growth-connector">
-          <div class="growth-node done"></div>
-        </div>
-        <div class="growth-card" data-detail="strategie">
-          <div class="growth-card-top">
-            <span class="tag tag-human">Consultant</span>
-            <span class="growth-time">Lundi, 09:00</span>
-          </div>
-          <h3>Priorisation stratégique du mois</h3>
-          <p>Décision prise en amont par Camille : concentrer les efforts sur la thématique « climatisation réversible » plutôt que « climatisation mobile », moins rentable pour ce client.</p>
-          <span class="card-cta">Voir le détail →</span>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -190,13 +520,6 @@
       <div class="modal-content" id="modalContent"></div>
     </div>
   </div>
-
-  <section class="footer-note">
-    <div class="footer-note-inner">
-      <p><strong>Ce que l'agent fait seul.</strong> Ce que l'humain décide et vérifie.</p>
-      <p class="footer-sub">Prototype conçu à partir de la recommandation 6.3 de cette thèse — une gouvernance visible, au rythme du travail réel plutôt que du reporting mensuel.</p>
-    </div>
-  </section>
 
 </main>
 
