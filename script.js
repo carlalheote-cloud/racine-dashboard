@@ -81,6 +81,23 @@ const details = {
       <h4>Pourquoi ce choix</h4>
       <p>Le volume de recherche est comparable entre les deux thématiques, mais le panier moyen sur la climatisation réversible est près de trois fois supérieur. C'est le type d'arbitrage que l'agent ne peut pas faire seul : il nécessite de connaître le contexte business du client, pas seulement les données de recherche.</p>
     `
+  },
+  "brief-doc": {
+    title: "Climatisation silencieuse appartement",
+    meta: "Agent IA · Validé par Camille · Document prêt à publier",
+    isDocument: true,
+    docHtml: `
+      <div class="doc-field"><span class="doc-label">Meta title</span><p>Climatisation silencieuse pour appartement : le guide 2026 | Ayrton</p></div>
+      <div class="doc-field"><span class="doc-label">Meta description</span><p>Vous cherchez une climatisation silencieuse pour votre appartement ? Découvrez nos modèles à moins de 25 dB, les aides disponibles et nos conseils d'installation.</p></div>
+      <hr>
+      <div class="doc-field"><span class="doc-label">H1</span><p>Climatisation silencieuse pour appartement : quel modèle choisir ?</p></div>
+      <div class="doc-field"><span class="doc-label">Introduction</span><p>Dans un appartement, le niveau sonore d'une climatisation est souvent le premier critère de choix. Entre les modèles mono-split, les climatiseurs mobiles et les systèmes réversibles, les écarts de décibels peuvent aller du simple au double. Ce guide vous aide à choisir un modèle réellement silencieux, adapté à un usage en immeuble collectif.</p></div>
+      <div class="doc-field"><span class="doc-label">H2</span><p>Pourquoi le niveau sonore varie autant d'un modèle à l'autre</p></div>
+      <div class="doc-field"><span class="doc-label">H2</span><p>Les modèles les plus silencieux du marché en 2026</p></div>
+      <div class="doc-field"><span class="doc-label">H2</span><p>Aides financières disponibles pour l'installation</p></div>
+      <div class="doc-field"><span class="doc-label">H2</span><p>Foire aux questions</p></div>
+      <div class="doc-field"><span class="doc-label">FAQ générée</span><p>5 questions : Quel est le niveau sonore acceptable la nuit, Faut-il l'accord de la copropriété, Quelle différence entre mono-split et multi-split, Quelles aides pour un appartement, Combien de temps dure l'installation</p></div>
+    `
   }
 };
 
@@ -116,12 +133,37 @@ document.querySelectorAll('.growth-card').forEach(card => {
     const d = details[key];
     if (!d) return;
 
-    modalContent.innerHTML = `
-      <p class="modal-meta">${d.meta}</p>
-      <h2>${d.title}</h2>
-      ${d.body}
-    `;
-    overlay.classList.add('open');
+    if (d.isDocument) {
+      modalContent.innerHTML = `
+        <p class="modal-meta">${d.meta}</p>
+        <h2>${d.title}</h2>
+        <div class="doc-preview">${d.docHtml}</div>
+        <div class="wp-publish-zone">
+          <button class="wp-btn" id="wpPublishBtn">
+            <span class="wp-icon">W</span> Publier sur WordPress
+          </button>
+          <p class="wp-hint">Publication directe sur le site du client, en un clic.</p>
+        </div>
+      `;
+      overlay.classList.add('open');
+      const btn = document.getElementById('wpPublishBtn');
+      btn.addEventListener('click', () => {
+        btn.innerHTML = '⏳ Publication en cours...';
+        btn.disabled = true;
+        setTimeout(() => {
+          btn.innerHTML = '✓ Publié sur le site';
+          btn.classList.add('wp-success');
+          showToast('Contenu publié', 'Le brief est maintenant en ligne sur ayrton-climatisation.fr');
+        }, 1100);
+      });
+    } else {
+      modalContent.innerHTML = `
+        <p class="modal-meta">${d.meta}</p>
+        <h2>${d.title}</h2>
+        ${d.body}
+      `;
+      overlay.classList.add('open');
+    }
   });
 });
 
@@ -132,3 +174,31 @@ overlay.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') overlay.classList.remove('open');
 });
+
+// --- Notifications (cloche + toast) ---
+const toast = document.getElementById('toast');
+const toastTitle = document.getElementById('toastTitle');
+const toastText = document.getElementById('toastText');
+const toastClose = document.getElementById('toastClose');
+const notifBell = document.getElementById('notifBell');
+const notifBadge = document.getElementById('notifBadge');
+
+function showToast(title, text) {
+  toastTitle.textContent = title;
+  toastText.textContent = text;
+  toast.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(() => toast.classList.remove('show'), 4500);
+}
+
+toastClose.addEventListener('click', () => toast.classList.remove('show'));
+
+notifBell.addEventListener('click', () => {
+  notifBadge.style.display = 'none';
+  showToast('Maillage interne mis à jour', 'Camille a validé 7 nouveaux liens internes ce matin à 09:14.');
+});
+
+// Simule une notification qui arrive peu après le chargement, pour la démo
+setTimeout(() => {
+  showToast('Nouvelle action sur votre compte', 'Le maillage interne vient d\'être mis à jour et validé par Camille.');
+}, 1800);

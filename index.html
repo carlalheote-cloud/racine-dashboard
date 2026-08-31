@@ -23,10 +23,22 @@
       <span>Racine</span>
     </div>
     <div class="topbar-right">
+      <button class="notif-bell" id="notifBell">
+        🔔<span class="notif-badge" id="notifBadge">1</span>
+      </button>
       <span class="account-pill">Compte — Ayrton Climatisation</span>
     </div>
   </div>
 </header>
+
+<div class="toast" id="toast">
+  <div class="toast-icon">✓</div>
+  <div class="toast-body">
+    <strong id="toastTitle">Nouvelle action sur votre compte</strong>
+    <p id="toastText">Le maillage interne vient d'être mis à jour.</p>
+  </div>
+  <button class="toast-close" id="toastClose">✕</button>
+</div>
 
 <main class="page">
 
@@ -109,15 +121,15 @@
           <div class="growth-node done"></div>
           <div class="growth-line"></div>
         </div>
-        <div class="growth-card" data-detail="brief">
+        <div class="growth-card" data-detail="brief-doc">
           <div class="growth-card-top">
             <span class="tag tag-agent">Agent IA</span>
             <span class="tag tag-validated">✓ Validé par Camille</span>
             <span class="growth-time">Hier, 16:40</span>
           </div>
-          <h3>Brief de contenu produit</h3>
-          <p>« Climatisation silencieuse appartement » — intention de recherche, structure Hn et FAQ générées à partir de l'analyse de la SERP concurrentielle.</p>
-          <span class="card-cta">Voir le détail →</span>
+          <h3>Brief de contenu produit — document complet</h3>
+          <p>« Climatisation silencieuse appartement » — brief entièrement rédigé, prêt à publier.</p>
+          <span class="card-cta">Ouvrir le document →</span>
         </div>
       </div>
 
