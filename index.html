@@ -23,6 +23,7 @@
       <span>Racine</span>
     </div>
     <div class="topbar-right">
+      <button class="view-toggle" id="viewToggle">👤 Vue consultant</button>
       <button class="notif-bell" id="notifBell">
         🔔<span class="notif-badge" id="notifBadge">1</span>
       </button>
@@ -54,6 +55,96 @@
 
 <main class="page">
 
+  <!-- ===== VUE CONSULTANT (masquée par défaut) ===== -->
+  <section class="consultant-view" id="consultantView">
+    <div class="panel-header">
+      <h2>👤 Vue consultant — file de validation</h2>
+      <p>Chaque anomalie détectée par l'agent passe ici avant d'être appliquée sur le site du client. Rien ne part en ligne sans ce filtre.</p>
+    </div>
+
+    <div class="review-queue" id="reviewQueue">
+
+      <div class="review-card" data-review="lien-casse">
+        <div class="review-top">
+          <span class="tag tag-agent">Détecté par l'agent</span>
+          <span class="growth-time">Il y a 12 min</span>
+        </div>
+        <h4>Corriger le lien cassé vers /produit-climatiseur-mural</h4>
+        <div class="before-after">
+          <div class="ba-col ba-before">
+            <span class="ba-label">Avant</span>
+            <p>&lt;a href="/climatiseur-mural-old"&gt;Voir le produit&lt;/a&gt;<br><em>→ Erreur 404</em></p>
+          </div>
+          <div class="ba-arrow">→</div>
+          <div class="ba-col ba-after">
+            <span class="ba-label">Après (proposé)</span>
+            <p>&lt;a href="/produit-climatiseur-mural"&gt;Voir le produit&lt;/a&gt;<br><em>→ Page active</em></p>
+          </div>
+        </div>
+        <div class="review-actions">
+          <button class="btn-validate">✓ Valider</button>
+          <button class="btn-modify">✎ Modifier</button>
+          <button class="btn-reject">✕ Rejeter</button>
+        </div>
+      </div>
+
+      <div class="review-card" data-review="maillage-pauvre">
+        <div class="review-top">
+          <span class="tag tag-agent">Détecté par l'agent</span>
+          <span class="growth-time">Il y a 40 min</span>
+        </div>
+        <h4>Renforcer le maillage interne de /climatisation-reversible</h4>
+        <div class="before-after">
+          <div class="ba-col ba-before">
+            <span class="ba-label">Avant</span>
+            <p>2 liens entrants seulement<br><em>→ Page peu visible dans le site</em></p>
+          </div>
+          <div class="ba-arrow">→</div>
+          <div class="ba-col ba-after">
+            <span class="ba-label">Après (proposé)</span>
+            <p>+5 liens depuis les articles de blog liés<br><em>→ Meilleur maillage sémantique</em></p>
+          </div>
+        </div>
+        <div class="review-actions">
+          <button class="btn-validate">✓ Valider</button>
+          <button class="btn-modify">✎ Modifier</button>
+          <button class="btn-reject">✕ Rejeter</button>
+        </div>
+      </div>
+
+      <div class="review-card" data-review="image-alt">
+        <div class="review-top">
+          <span class="tag tag-agent">Détecté par l'agent</span>
+          <span class="growth-time">Il y a 1h</span>
+        </div>
+        <h4>Remplacer l'image générique par un visuel produit réel</h4>
+        <div class="before-after">
+          <div class="ba-col ba-before">
+            <span class="ba-label">Avant</span>
+            <p>Photo banque d'images, non spécifique<br><em>→ alt="climatisation"</em></p>
+          </div>
+          <div class="ba-arrow">→</div>
+          <div class="ba-col ba-after">
+            <span class="ba-label">Après (proposé)</span>
+            <p>Photo du modèle réel vendu par Ayrton<br><em>→ alt="climatiseur mural Ayrton 2500W"</em></p>
+          </div>
+        </div>
+        <div class="review-actions">
+          <button class="btn-validate">✓ Valider</button>
+          <button class="btn-modify">✎ Modifier</button>
+          <button class="btn-reject">✕ Rejeter</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="review-empty" id="reviewEmpty" style="display:none;">
+      <p>✓ File vide. Tout est validé, rien n'attend votre revue.</p>
+    </div>
+  </section>
+
+  <!-- ===== VUE CLIENT (visible par défaut) ===== -->
+  <div class="client-view" id="clientView">
   <!-- ===== ONGLET VUE D'ENSEMBLE ===== -->
   <section class="tab-panel active" id="panel-overview">
 
@@ -520,6 +611,9 @@
       </div>
     </div>
   </section>
+
+  </div>
+  <!-- fin client-view -->
 
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal">

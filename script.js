@@ -300,3 +300,66 @@ function maybeShowOnboardResult() {
   resultBox.style.display = 'block';
   resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
+
+// --- Stratégie : proposer un mot-clé ---
+const strategyInput = document.getElementById('strategyInput');
+const strategySend = document.getElementById('strategySend');
+
+if (strategySend) {
+  strategySend.addEventListener('click', () => {
+    const val = strategyInput.value.trim();
+    if (!val) return;
+    const table = strategySend.closest('.tab-panel').querySelector('.list-table');
+    const row = document.createElement('div');
+    row.className = 'strategy-row';
+    row.innerHTML = `<div class="list-main"><h4>${val}</h4><span class="list-sub">Proposé par vous à l'instant</span></div><span class="status status-progress">Envoyé à Camille</span>`;
+    table.appendChild(row);
+    strategyInput.value = '';
+    showToast('Suggestion envoyée', 'Camille va étudier ce mot-clé et revient vers vous rapidement.');
+  });
+}
+
+// --- Bascule Vue Client / Vue Consultant ---
+const viewToggle = document.getElementById('viewToggle');
+const consultantView = document.getElementById('consultantView');
+const clientView = document.getElementById('clientView');
+let isConsultantView = false;
+
+viewToggle.addEventListener('click', () => {
+  isConsultantView = !isConsultantView;
+  consultantView.classList.toggle('open', isConsultantView);
+  clientView.style.display = isConsultantView ? 'none' : 'block';
+  viewToggle.textContent = isConsultantView ? '🏠 Vue client' : '👤 Vue consultant';
+});
+
+// --- File de validation : valider / modifier / rejeter ---
+document.querySelectorAll('.review-card').forEach(card => {
+  const validateBtn = card.querySelector('.btn-validate');
+  const modifyBtn = card.querySelector('.btn-modify');
+  const rejectBtn = card.querySelector('.btn-reject');
+
+  validateBtn.addEventListener('click', () => {
+    card.classList.add('review-resolved');
+    card.innerHTML = `<p class="resolved-msg">✓ Validé — appliqué sur le site du client</p>`;
+    showToast('Action validée', 'Le client verra cette mise à jour dans sa Vue d\'ensemble.');
+    checkQueueEmpty();
+  });
+
+  rejectBtn.addEventListener('click', () => {
+    card.classList.add('review-resolved');
+    card.innerHTML = `<p class="resolved-msg resolved-rejected">✕ Rejeté — l'agent ne réappliquera pas cette action</p>`;
+    showToast('Action rejetée', 'Votre décision a été enregistrée.');
+    checkQueueEmpty();
+  });
+
+  modifyBtn.addEventListener('click', () => {
+    showToast('Édition', 'Ouverture de l\'éditeur pour ajuster la proposition avant validation.');
+  });
+});
+
+function checkQueueEmpty() {
+  const remaining = document.querySelectorAll('.review-card:not(.review-resolved)').length;
+  if (remaining === 0) {
+    document.getElementById('reviewEmpty').style.display = 'block';
+  }
+}
