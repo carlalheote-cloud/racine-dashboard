@@ -1,4 +1,38 @@
-// --- Détails complets pour chaque tâche, affichés dans la modale au clic ---
+// --- Navigation par onglets principaux ---
+const mainTabs = document.querySelectorAll('.main-tab');
+const panels = document.querySelectorAll('.tab-panel');
+
+mainTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    mainTabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const target = tab.dataset.tab;
+    panels.forEach(p => p.classList.toggle('active', p.id === `panel-${target}`));
+  });
+});
+
+// --- Rendre les lignes de listes (briefs) cliquables vers la modale ---
+document.querySelectorAll('.list-row-click').forEach(row => {
+  row.addEventListener('click', () => openDetail(row.dataset.detail));
+});
+
+// --- Boutons d'accès : demande envoyée ---
+document.querySelectorAll('.access-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.textContent = 'Demande envoyée ✓';
+    btn.disabled = true;
+    showToast('Demande envoyée', 'Camille a été notifiée de votre demande d\'accès.');
+  });
+});
+
+// --- Boutons PDF : simulation de téléchargement ---
+document.querySelectorAll('.pdf-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    showToast('Téléchargement', 'Le rapport PDF va s\'ouvrir dans un nouvel onglet.');
+  });
+});
+
+
 const details = {
   maillage: {
     title: "Maillage interne mis à jour",
@@ -127,44 +161,45 @@ const overlay = document.getElementById('modalOverlay');
 const modalContent = document.getElementById('modalContent');
 const modalClose = document.getElementById('modalClose');
 
-document.querySelectorAll('.growth-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const key = card.dataset.detail;
-    const d = details[key];
-    if (!d) return;
+function openDetail(key) {
+  const d = details[key];
+  if (!d) return;
 
-    if (d.isDocument) {
-      modalContent.innerHTML = `
-        <p class="modal-meta">${d.meta}</p>
-        <h2>${d.title}</h2>
-        <div class="doc-preview">${d.docHtml}</div>
-        <div class="wp-publish-zone">
-          <button class="wp-btn" id="wpPublishBtn">
-            <span class="wp-icon">W</span> Publier sur WordPress
-          </button>
-          <p class="wp-hint">Publication directe sur le site du client, en un clic.</p>
-        </div>
-      `;
-      overlay.classList.add('open');
-      const btn = document.getElementById('wpPublishBtn');
-      btn.addEventListener('click', () => {
-        btn.innerHTML = '⏳ Publication en cours...';
-        btn.disabled = true;
-        setTimeout(() => {
-          btn.innerHTML = '✓ Publié sur le site';
-          btn.classList.add('wp-success');
-          showToast('Contenu publié', 'Le brief est maintenant en ligne sur ayrton-climatisation.fr');
-        }, 1100);
-      });
-    } else {
-      modalContent.innerHTML = `
-        <p class="modal-meta">${d.meta}</p>
-        <h2>${d.title}</h2>
-        ${d.body}
-      `;
-      overlay.classList.add('open');
-    }
-  });
+  if (d.isDocument) {
+    modalContent.innerHTML = `
+      <p class="modal-meta">${d.meta}</p>
+      <h2>${d.title}</h2>
+      <div class="doc-preview">${d.docHtml}</div>
+      <div class="wp-publish-zone">
+        <button class="wp-btn" id="wpPublishBtn">
+          <span class="wp-icon">W</span> Publier sur WordPress
+        </button>
+        <p class="wp-hint">Publication directe sur le site du client, en un clic.</p>
+      </div>
+    `;
+    overlay.classList.add('open');
+    const btn = document.getElementById('wpPublishBtn');
+    btn.addEventListener('click', () => {
+      btn.innerHTML = '⏳ Publication en cours...';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.innerHTML = '✓ Publié sur le site';
+        btn.classList.add('wp-success');
+        showToast('Contenu publié', 'Le brief est maintenant en ligne sur ayrton-climatisation.fr');
+      }, 1100);
+    });
+  } else {
+    modalContent.innerHTML = `
+      <p class="modal-meta">${d.meta}</p>
+      <h2>${d.title}</h2>
+      ${d.body}
+    `;
+    overlay.classList.add('open');
+  }
+}
+
+document.querySelectorAll('.growth-card').forEach(card => {
+  card.addEventListener('click', () => openDetail(card.dataset.detail));
 });
 
 modalClose.addEventListener('click', () => overlay.classList.remove('open'));
@@ -202,3 +237,66 @@ notifBell.addEventListener('click', () => {
 setTimeout(() => {
   showToast('Nouvelle action sur votre compte', 'Le maillage interne vient d\'être mis à jour et validé par Camille.');
 }, 1800);
+
+// --- Discussion : envoi de message simulé ---
+const chatMessages = document.getElementById('chatMessages');
+const chatInput = document.getElementById('chatInput');
+const chatSend = document.getElementById('chatSend');
+
+function sendChatMessage() {
+  const text = chatInput.value.trim();
+  if (!text) return;
+  const msg = document.createElement('div');
+  msg.className = 'chat-msg chat-client';
+  const now = new Date();
+  const time = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
+  msg.innerHTML = `<p>${text}</p><span class="chat-time">${time}</span>`;
+  chatMessages.appendChild(msg);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+  chatInput.value = '';
+
+  setTimeout(() => {
+    const reply = document.createElement('div');
+    reply.className = 'chat-msg chat-consultant';
+    reply.innerHTML = `<span class="chat-author">Camille</span><p>Bien reçu, je regarde ça et je reviens vers vous rapidement.</p><span class="chat-time">à l'instant</span>`;
+    chatMessages.appendChild(reply);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }, 1200);
+}
+
+if (chatSend) {
+  chatSend.addEventListener('click', sendChatMessage);
+  chatInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendChatMessage(); });
+}
+
+// --- Onboarding : questionnaire interactif ---
+const onboardAnswers = {};
+document.querySelectorAll('.onboard-choices').forEach(group => {
+  const q = group.dataset.q;
+  group.querySelectorAll('.onboard-choice').forEach(btn => {
+    btn.addEventListener('click', () => {
+      group.querySelectorAll('.onboard-choice').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      onboardAnswers[q] = btn.textContent;
+      maybeShowOnboardResult();
+    });
+  });
+});
+
+function maybeShowOnboardResult() {
+  if (Object.keys(onboardAnswers).length < 3) return;
+  const resultBox = document.getElementById('onboardResult');
+  const resultText = document.getElementById('onboardResultText');
+
+  let profile = '';
+  if (onboardAnswers['2'] === 'Je délègue tout' || onboardAnswers['1'] === 'Non') {
+    profile = 'Profil délégation complète. Camille pilotera l\'ensemble sans attendre de disponibilité de votre part, avec un point mensuel synthétique.';
+  } else if (onboardAnswers['3'] === 'Oui') {
+    profile = 'Profil accompagnement renforcé. Votre architecture complexe justifie un suivi rapproché, avec plus d\'échanges directs avec Camille.';
+  } else {
+    profile = 'Profil collaboratif. Vous gardez la main sur les décisions clés, Camille vous sollicite avant chaque arbitrage important.';
+  }
+  resultText.textContent = profile;
+  resultBox.style.display = 'block';
+  resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
