@@ -189,13 +189,13 @@ body {
 /* Stats */
 .stats-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
   border-radius: 14px;
   overflow: hidden;
-  margin-bottom: 56px;
+  margin-bottom: 16px;
 }
 .stat-card {
   background: var(--paper);
@@ -1230,4 +1230,154 @@ body {
 @media (max-width: 640px) {
   .before-after { grid-template-columns: 1fr; }
   .ba-arrow { transform: rotate(90deg); justify-self: center; }
+}
+
+/* ===== Volume de recherche ===== */
+.volume-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  background: var(--paper-warm);
+  padding: 5px 11px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+/* ===== Onglets Document / Aperçu ===== */
+.doc-tabs { display: flex; gap: 6px; margin-bottom: 14px; }
+.doc-tab {
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  padding: 7px 15px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.doc-tab.active { background: var(--forest); border-color: var(--forest); color: var(--paper); }
+.doc-tab-panel { display: none; }
+.doc-tab-panel.active { display: block; }
+
+/* ===== Aperçu du site (mockup navigateur) ===== */
+.site-preview {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.site-preview-bar {
+  background: #E9E4D6;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.spb-dot { width: 8px; height: 8px; border-radius: 50%; background: #C9C2B0; }
+.spb-url {
+  margin-left: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--ink-soft);
+  background: white;
+  padding: 3px 10px;
+  border-radius: 5px;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.site-preview-body { background: white; padding: 22px 24px; }
+.sp-hero {
+  height: 90px;
+  border-radius: 8px;
+  background: linear-gradient(120deg, var(--growth), var(--growth-light));
+  margin-bottom: 16px;
+}
+.sp-h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.sp-intro { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.55; margin-bottom: 16px; }
+.sp-h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--forest);
+  margin: 16px 0 8px;
+}
+.sp-line { height: 9px; background: var(--paper-warm); border-radius: 4px; margin-bottom: 7px; }
+.sp-line-short { width: 60%; }
+
+/* ===== Ligne du bas des cartes : impact + annuler ===== */
+.card-bottom-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.impact-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--growth);
+  background: #E4EEE7;
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+.undo-btn {
+  margin-left: auto;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #9A9385;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.undo-btn:hover:not(:disabled) { border-color: #B5482F; color: #B5482F; }
+.undo-btn:disabled { opacity: 0.6; cursor: default; }
+
+/* ===== Carte graphique de trafic ===== */
+.traffic-chart-card {
+  background: var(--forest);
+  border-radius: 14px;
+  padding: 20px 22px 14px;
+  margin-bottom: 40px;
+}
+.traffic-chart-head { margin-bottom: 14px; }
+.traffic-number {
+  color: var(--growth-light);
+  font-size: 1.9rem;
+  margin-right: 10px;
+}
+.traffic-chart-head .stat-label { color: #C9C2B0; }
+
+.mini-chart { position: relative; }
+.mini-chart-svg { width: 100%; height: 70px; display: block; }
+.mini-chart-line {
+  fill: none;
+  stroke: var(--growth-light);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.mini-chart-fill {
+  fill: var(--growth-light);
+  opacity: 0.14;
+}
+.mini-chart-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  color: #7A8A80;
 }

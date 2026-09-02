@@ -169,7 +169,34 @@ function openDetail(key) {
     modalContent.innerHTML = `
       <p class="modal-meta">${d.meta}</p>
       <h2>${d.title}</h2>
-      <div class="doc-preview">${d.docHtml}</div>
+
+      <div class="doc-tabs">
+        <button class="doc-tab active" data-doctab="doc">📄 Document</button>
+        <button class="doc-tab" data-doctab="preview">🌐 Aperçu du site</button>
+      </div>
+
+      <div class="doc-tab-panel active" data-docpanel="doc">
+        <div class="doc-preview">${d.docHtml}</div>
+      </div>
+
+      <div class="doc-tab-panel" data-docpanel="preview">
+        <div class="site-preview">
+          <div class="site-preview-bar">
+            <span class="spb-dot"></span><span class="spb-dot"></span><span class="spb-dot"></span>
+            <span class="spb-url">ayrton-climatisation.fr/climatisation-silencieuse-appartement</span>
+          </div>
+          <div class="site-preview-body">
+            <div class="sp-hero"></div>
+            <h1 class="sp-h1">Climatisation silencieuse pour appartement : quel modèle choisir ?</h1>
+            <p class="sp-intro">Dans un appartement, le niveau sonore d'une climatisation est souvent le premier critère de choix. Entre les modèles mono-split, les climatiseurs mobiles et les systèmes réversibles, les écarts de décibels peuvent aller du simple au double.</p>
+            <h2 class="sp-h2">Pourquoi le niveau sonore varie autant d'un modèle à l'autre</h2>
+            <div class="sp-line"></div><div class="sp-line"></div><div class="sp-line sp-line-short"></div>
+            <h2 class="sp-h2">Les modèles les plus silencieux du marché en 2026</h2>
+            <div class="sp-line"></div><div class="sp-line sp-line-short"></div>
+          </div>
+        </div>
+      </div>
+
       <div class="wp-publish-zone">
         <button class="wp-btn" id="wpPublishBtn">
           <span class="wp-icon">W</span> Publier sur WordPress
@@ -178,6 +205,18 @@ function openDetail(key) {
       </div>
     `;
     overlay.classList.add('open');
+
+    modalContent.querySelectorAll('.doc-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        modalContent.querySelectorAll('.doc-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const target = tab.dataset.doctab;
+        modalContent.querySelectorAll('.doc-tab-panel').forEach(p => {
+          p.classList.toggle('active', p.dataset.docpanel === target);
+        });
+      });
+    });
+
     const btn = document.getElementById('wpPublishBtn');
     btn.addEventListener('click', () => {
       btn.innerHTML = '⏳ Publication en cours...';
@@ -312,7 +351,7 @@ if (strategySend) {
     const table = strategySend.closest('.tab-panel').querySelector('.list-table');
     const row = document.createElement('div');
     row.className = 'strategy-row';
-    row.innerHTML = `<div class="list-main"><h4>${val}</h4><span class="list-sub">Proposé par vous à l'instant</span></div><span class="status status-progress">Envoyé à Camille</span>`;
+    row.innerHTML = `<div class="list-main"><h4>${val}</h4><span class="list-sub">Proposé par vous à l'instant</span></div><span class="volume-pill">🔍 Estimation en cours</span><span class="status status-progress">Envoyé à Camille</span>`;
     table.appendChild(row);
     strategyInput.value = '';
     showToast('Suggestion envoyée', 'Camille va étudier ce mot-clé et revient vers vous rapidement.');
@@ -363,3 +402,20 @@ function checkQueueEmpty() {
     document.getElementById('reviewEmpty').style.display = 'block';
   }
 }
+
+// --- Bouton Annuler sur les actions déjà en ligne ---
+document.querySelectorAll('.undo-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation(); // ne pas ouvrir la modale du dessus
+    const label = btn.dataset.undo;
+    const card = btn.closest('.growth-card');
+    card.style.opacity = '0.5';
+    btn.textContent = '↺ Annulation...';
+    btn.disabled = true;
+    setTimeout(() => {
+      showToast('Action annulée', `« ${label} » a été retiré de votre site. Camille en a été informée.`);
+      card.style.opacity = '1';
+      btn.textContent = '✓ Annulé';
+    }, 900);
+  });
+});

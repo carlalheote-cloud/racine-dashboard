@@ -177,9 +177,23 @@
         <span class="stat-number">2</span>
         <span class="stat-label">points de vigilance<br>en attente</span>
       </div>
-      <div class="stat-card accent">
-        <span class="stat-number">+18%</span>
-        <span class="stat-label">clics organiques<br>vs mois dernier</span>
+    </div>
+
+    <div class="traffic-chart-card">
+      <div class="traffic-chart-head">
+        <div>
+          <span class="stat-number traffic-number">+18%</span>
+          <span class="stat-label">clics organiques, 4 dernières semaines</span>
+        </div>
+      </div>
+      <div class="mini-chart" id="trafficChart">
+        <svg viewBox="0 0 280 70" preserveAspectRatio="none" class="mini-chart-svg">
+          <polyline class="mini-chart-line" points="0,55 70,48 140,38 210,30 280,14" />
+          <polygon class="mini-chart-fill" points="0,55 70,48 140,38 210,30 280,14 280,70 0,70" />
+        </svg>
+        <div class="mini-chart-labels">
+          <span>Sem. 1</span><span>Sem. 2</span><span>Sem. 3</span><span>Sem. 4</span>
+        </div>
       </div>
     </div>
 
@@ -248,7 +262,11 @@
             </div>
             <h3>Maillage interne mis à jour</h3>
             <p>7 nouveaux liens internes déjà intégrés sur « Climatisation réversible ». Aucune action requise de votre part.</p>
-            <span class="card-cta">Voir le détail →</span>
+            <div class="card-bottom-row">
+              <span class="card-cta">Voir le détail →</span>
+              <span class="impact-badge">📈 +12% de vues depuis</span>
+              <button class="undo-btn" data-undo="Maillage interne">↺ Annuler</button>
+            </div>
           </div>
         </div>
 
@@ -262,7 +280,11 @@
             </div>
             <h3>Plan de migration — nouvelle arborescence</h3>
             <p>340 URL cartographiées et vérifiées avant redirection.</p>
-            <span class="card-cta">Voir le détail →</span>
+            <div class="card-bottom-row">
+              <span class="card-cta">Voir le détail →</span>
+              <span class="impact-badge">📈 0% de trafic perdu</span>
+              <button class="undo-btn" data-undo="Plan de migration">↺ Annuler</button>
+            </div>
           </div>
         </div>
 
@@ -276,7 +298,10 @@
             </div>
             <h3>Brief de contenu produit — document complet</h3>
             <p>« Climatisation silencieuse appartement » — prêt à publier.</p>
-            <span class="card-cta">Ouvrir le document →</span>
+            <div class="card-bottom-row">
+              <span class="card-cta">Ouvrir le document →</span>
+              <button class="undo-btn" data-undo="Brief de contenu">↺ Annuler</button>
+            </div>
           </div>
         </div>
 
@@ -303,7 +328,11 @@
             </div>
             <h3>Audit technique hebdomadaire</h3>
             <p>Crawl complet, 2 redirections en chaîne corrigées.</p>
-            <span class="card-cta">Voir le détail →</span>
+            <div class="card-bottom-row">
+              <span class="card-cta">Voir le détail →</span>
+              <span class="impact-badge">📈 -0,3s de chargement</span>
+              <button class="undo-btn" data-undo="Audit technique">↺ Annuler</button>
+            </div>
           </div>
         </div>
 
@@ -344,14 +373,17 @@
     <div class="list-table">
       <div class="strategy-row">
         <div class="list-main"><h4>Climatisation réversible appartement</h4><span class="list-sub">Validé avec vous le 12 août</span></div>
+        <span class="volume-pill">🔍 1 900 / mois</span>
         <span class="status status-published">✓ Validé</span>
       </div>
       <div class="strategy-row">
         <div class="list-main"><h4>Climatisation silencieuse</h4><span class="list-sub">Validé avec vous le 12 août</span></div>
+        <span class="volume-pill">🔍 720 / mois</span>
         <span class="status status-published">✓ Validé</span>
       </div>
       <div class="strategy-row">
         <div class="list-main"><h4>Pompe à chaleur air-air</h4><span class="list-sub">Proposé par notre agent, en attente de votre avis</span></div>
+        <span class="volume-pill">🔍 2 400 / mois</span>
         <span class="status status-progress">À valider</span>
       </div>
     </div>
