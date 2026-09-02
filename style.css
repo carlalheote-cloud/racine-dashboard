@@ -999,3 +999,123 @@ body {
   color: var(--growth);
   font-weight: 700;
 }
+
+/* ===== Onglet Stratégie ===== */
+.strategy-intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #E4EEE7;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 8px;
+}
+.strategy-icon { font-size: 1.4rem; }
+.strategy-intro p {
+  font-size: 0.9rem;
+  color: var(--forest);
+  line-height: 1.5;
+  font-weight: 500;
+}
+.sub-h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--forest);
+}
+.strategy-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+}
+.strategy-row:last-child { border-bottom: none; }
+.strategy-suggest {
+  margin-top: 18px;
+  background: white;
+  border: 1px dashed var(--growth);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.strategy-suggest-label {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 10px;
+}
+.strategy-suggest-row { display: flex; gap: 8px; }
+
+/* ===== Workflow façon n8n ===== */
+.workflow-section {
+  background: var(--forest-deep);
+  border-radius: 16px;
+  padding: 28px 24px;
+  margin-bottom: 40px;
+}
+.workflow-section .growth-header h2 { color: var(--paper); }
+.workflow-section .growth-header p { color: #9AA89E; }
+
+.n8n-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  overflow-x: auto;
+  padding: 20px 4px 12px;
+}
+.n8n-node {
+  flex-shrink: 0;
+  width: 96px;
+  height: 96px;
+  border-radius: 14px;
+  background: #16362B;
+  border: 1.5px solid #2A4A3C;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+}
+.n8n-icon { font-size: 1.4rem; }
+.n8n-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: #C9C2B0;
+  line-height: 1.25;
+}
+.n8n-node.n8n-active { border-color: var(--growth); box-shadow: 0 0 0 3px rgba(82,145,107,0.18); }
+.n8n-node.n8n-active .n8n-label { color: var(--growth-light); }
+.n8n-node.n8n-human { border-color: var(--amber); }
+.n8n-node.n8n-human .n8n-label { color: #E0C99A; }
+.n8n-node.n8n-live { border-color: var(--growth-light); background: #1B4332; }
+.n8n-node.n8n-live .n8n-label { color: var(--paper); }
+.n8n-node.n8n-done .n8n-label { color: #C9C2B0; }
+
+.n8n-connector {
+  width: 44px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.n8n-connector path {
+  stroke: #2A4A3C;
+  stroke-width: 1.5;
+  fill: none;
+}
+.n8n-pulse { fill: var(--growth-light); }
+
+.workflow-note {
+  text-align: center;
+  font-size: 0.82rem;
+  color: #9AA89E;
+  font-style: italic;
+  margin-top: 8px;
+}
+
+@media (max-width: 700px) {
+  .n8n-node { width: 78px; height: 78px; }
+  .n8n-connector { width: 26px; }
+}

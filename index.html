@@ -32,7 +32,7 @@
 
   <nav class="main-tabs">
     <button class="main-tab active" data-tab="overview">Vue d'ensemble</button>
-    <button class="main-tab" data-tab="todo">À faire</button>
+    <button class="main-tab" data-tab="strategie">Stratégie</button>
     <button class="main-tab" data-tab="briefs">Briefs</button>
     <button class="main-tab" data-tab="audits">Audits</button>
     <button class="main-tab" data-tab="rapports">Rapports</button>
@@ -58,8 +58,8 @@
   <section class="tab-panel active" id="panel-overview">
 
     <div class="hero">
-      <h1>Rien à faire de votre côté.<br>Tout avance, vous suivez.</h1>
-      <p class="hero-sub">Racine se connecte à vos outils, ingère vos données et agit directement sur votre site. Chaque action est vérifiée par un consultant avant de partir en ligne, mais vous n'avez jamais besoin de valider vous-même pour que le travail avance.</p>
+      <h1>Vous choisissez la direction.<br>On exécute tout le reste.</h1>
+      <p class="hero-sub">Les mots-clés se décident avec vous, dans l'onglet Stratégie. Tout ce qui suit, rédaction, intégration, maillage, corrections, se fait automatiquement. Vous n'avez rien à exécuter vous-même.</p>
     </div>
 
     <div class="sources-connected">
@@ -90,6 +90,46 @@
         <span class="stat-number">+18%</span>
         <span class="stat-label">clics organiques<br>vs mois dernier</span>
       </div>
+    </div>
+
+    <div class="workflow-section">
+      <div class="growth-header">
+        <h2>Le workflow, en direct</h2>
+        <p>Voici comment un mot-clé validé devient, automatiquement, un contenu publié sur votre site.</p>
+      </div>
+
+      <div class="n8n-flow">
+        <div class="n8n-node n8n-done">
+          <span class="n8n-icon">🤝</span>
+          <span class="n8n-label">Mot-clé validé</span>
+        </div>
+        <svg class="n8n-connector" viewBox="0 0 60 20" preserveAspectRatio="none"><path d="M0,10 L60,10" /><circle class="n8n-pulse" r="3" cy="10"><animateMotion dur="2.2s" repeatCount="indefinite" path="M0,10 L60,10" /></circle></svg>
+
+        <div class="n8n-node n8n-active">
+          <span class="n8n-icon">✍️</span>
+          <span class="n8n-label">Agent IA<br>Rédaction</span>
+        </div>
+        <svg class="n8n-connector" viewBox="0 0 60 20" preserveAspectRatio="none"><path d="M0,10 L60,10" /><circle class="n8n-pulse" r="3" cy="10"><animateMotion dur="2.2s" repeatCount="indefinite" path="M0,10 L60,10" /></circle></svg>
+
+        <div class="n8n-node n8n-active">
+          <span class="n8n-icon">🔗</span>
+          <span class="n8n-label">Agent IA<br>Intégration</span>
+        </div>
+        <svg class="n8n-connector" viewBox="0 0 60 20" preserveAspectRatio="none"><path d="M0,10 L60,10" /><circle class="n8n-pulse" r="3" cy="10"><animateMotion dur="2.2s" repeatCount="indefinite" path="M0,10 L60,10" /></circle></svg>
+
+        <div class="n8n-node n8n-human">
+          <span class="n8n-icon">👁️</span>
+          <span class="n8n-label">Camille<br>Vérifie</span>
+        </div>
+        <svg class="n8n-connector" viewBox="0 0 60 20" preserveAspectRatio="none"><path d="M0,10 L60,10" /><circle class="n8n-pulse" r="3" cy="10"><animateMotion dur="2.2s" repeatCount="indefinite" path="M0,10 L60,10" /></circle></svg>
+
+        <div class="n8n-node n8n-live">
+          <span class="n8n-icon">🌐</span>
+          <span class="n8n-label">Publié<br>en ligne</span>
+        </div>
+      </div>
+
+      <p class="workflow-note">Ce flux tourne en continu. Vous n'intervenez qu'à la première étape, la sélection du mot-clé.</p>
     </div>
 
     <div class="growth-section">
@@ -194,81 +234,48 @@
   </section>
 
   <!-- ===== ONGLET À FAIRE (KANBAN) ===== -->
-  <section class="tab-panel" id="panel-todo">
+  <!-- ===== ONGLET STRATÉGIE ===== -->
+  <section class="tab-panel" id="panel-strategie">
     <div class="panel-header">
-      <h2>À faire</h2>
-      <p>Toutes les tâches en cours sur votre compte, classées par priorité et par statut.</p>
+      <h2>Stratégie</h2>
+      <p>La seule chose que vous décidez avec nous. Tout le reste s'exécute automatiquement, sans rien attendre de votre part.</p>
     </div>
 
-    <div class="kanban">
-      <div class="kanban-col">
-        <div class="kanban-col-head"><span class="kanban-dot todo"></span> À faire <span class="kanban-count">3</span></div>
+    <div class="strategy-intro">
+      <span class="strategy-icon">🤝</span>
+      <p>Vous connaissez votre métier mieux que personne. Nous choisissons ensemble les sujets à cibler. Ensuite, l'exécution ne vous demande plus rien.</p>
+    </div>
 
-        <div class="kanban-card">
-          <span class="priority priority-high">Priorité haute</span>
-          <h4>Refonte des balises title catégories</h4>
-          <p>12 pages catégories à optimiser suite à l'audit sémantique</p>
-          <div class="kanban-foot"><span class="tag tag-agent">Agent IA</span><span class="kanban-date">Prévu jeu. 28</span></div>
-        </div>
+    <div class="panel-header" style="margin-top:32px;">
+      <h3 class="sub-h3">Mots-clés validés ensemble</h3>
+    </div>
 
-        <div class="kanban-card">
-          <span class="priority priority-medium">Priorité moyenne</span>
-          <h4>Brief « pompe à chaleur air-air »</h4>
-          <p>Nouveau mot-clé identifié, fort potentiel de trafic</p>
-          <div class="kanban-foot"><span class="tag tag-agent">Agent IA</span><span class="kanban-date">Prévu ven. 29</span></div>
-        </div>
-
-        <div class="kanban-card">
-          <span class="priority priority-low">Priorité basse</span>
-          <h4>Nettoyage des balises alt images</h4>
-          <p>Point mineur relevé lors du dernier audit technique</p>
-          <div class="kanban-foot"><span class="tag tag-agent">Agent IA</span><span class="kanban-date">Prévu la semaine pro.</span></div>
-        </div>
+    <div class="list-table">
+      <div class="strategy-row">
+        <div class="list-main"><h4>Climatisation réversible appartement</h4><span class="list-sub">Validé avec vous le 12 août</span></div>
+        <span class="status status-published">✓ Validé</span>
       </div>
-
-      <div class="kanban-col">
-        <div class="kanban-col-head"><span class="kanban-dot progress"></span> En cours <span class="kanban-count">2</span></div>
-
-        <div class="kanban-card">
-          <span class="priority priority-high">Priorité haute</span>
-          <h4><span class="gear-spin">⚙</span> Plan de migration — nouvelle arborescence</h4>
-          <p>340 URL à rediriger, 28 cas ambigus à arbitrer</p>
-          <div class="kanban-foot"><span class="tag tag-human">Camille</span><span class="kanban-date">Depuis mardi</span></div>
-        </div>
-
-        <div class="kanban-card kanban-warning">
-          <span class="priority priority-high">Priorité haute</span>
-          <h4><span class="gear-spin">⚙</span> Anomalie prix produits</h4>
-          <p>3 fiches en attente de vérification avant correction</p>
-          <div class="kanban-foot"><span class="tag tag-warning">⚠ À valider</span><span class="kanban-date">Depuis hier</span></div>
-        </div>
+      <div class="strategy-row">
+        <div class="list-main"><h4>Climatisation silencieuse</h4><span class="list-sub">Validé avec vous le 12 août</span></div>
+        <span class="status status-published">✓ Validé</span>
       </div>
-
-      <div class="kanban-col">
-        <div class="kanban-col-head"><span class="kanban-dot done"></span> Terminé <span class="kanban-count">3</span></div>
-
-        <div class="kanban-card kanban-done">
-          <h4>Maillage interne mis à jour</h4>
-          <p>7 nouveaux liens internes ajoutés</p>
-          <div class="kanban-foot"><span class="tag tag-validated">✓ Camille</span><span class="kanban-date">Aujourd'hui</span></div>
-        </div>
-
-        <div class="kanban-card kanban-done">
-          <h4>Brief « climatisation silencieuse »</h4>
-          <p>Document complet, prêt à publier</p>
-          <div class="kanban-foot"><span class="tag tag-validated">✓ Camille</span><span class="kanban-date">Hier</span></div>
-        </div>
-
-        <div class="kanban-card kanban-done">
-          <h4>Audit technique hebdomadaire</h4>
-          <p>Crawl complet, 2 redirections corrigées</p>
-          <div class="kanban-foot"><span class="tag tag-validated">✓ Camille</span><span class="kanban-date">Lundi</span></div>
-        </div>
+      <div class="strategy-row">
+        <div class="list-main"><h4>Pompe à chaleur air-air</h4><span class="list-sub">Proposé par notre agent, en attente de votre avis</span></div>
+        <span class="status status-progress">À valider</span>
       </div>
     </div>
+
+    <div class="strategy-suggest">
+      <p class="strategy-suggest-label">Un sujet que vous connaissez bien et qu'on devrait cibler ?</p>
+      <div class="strategy-suggest-row">
+        <input type="text" class="chat-input" id="strategyInput" placeholder="Ex. climatisation pour commerce...">
+        <button class="chat-send" id="strategySend">Proposer</button>
+      </div>
+    </div>
+
+    <p class="access-note" style="margin-top:24px;">🚀 Une fois un mot-clé validé, tout le reste, rédaction, intégration, maillage, suivi, se fait automatiquement. Vous n'avez plus rien à faire.</p>
   </section>
 
-  <!-- ===== ONGLET BRIEFS ===== -->
   <section class="tab-panel" id="panel-briefs">
     <div class="panel-header">
       <h2>Briefs</h2>
